@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-               bat '''gcc -o seg.exe seg.c
+              bat '''cd source
+gcc -o seg.exe seg.c
 seg'''
             }
         }
