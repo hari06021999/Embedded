@@ -8,7 +8,7 @@ pipeline {
     stages {
       stage('checkout') {
         steps{
-          
+           checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://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@github.com/hari06021999/Embedded.git']]])
         }
       }
         stage('Build') { 
