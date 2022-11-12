@@ -1,13 +1,15 @@
 pipeline {
     agent any 
 
+    environment {
+        TOOL_DIR = "${WORKSPACE}\\ci-cd-tool"
+    }
+
     stages {
         stage('Build') { 
             steps {
-              bat '''cd source
-gcc -o seg.exe seg.c
-seg'''
+                bat "${TOOL_DIR}\\build.bat ${WORKSPACE}\\Debug Debug all"
+                bat "${TOOL_DIR}\\build.bat ${WORKSPACE}\\Release Release all"
             }
         }
     }
-}
