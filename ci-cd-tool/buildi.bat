@@ -1,5 +1,5 @@
 rem @echo off
-set "usage=usage: buildi [{Debug} {all}]"
+set "usage=usage: buildi [{Debug|Release} {all|clean}]"
 
 setlocal
 
