@@ -20,7 +20,7 @@ set PATH=C:\ST\STM32CubeIDE_1.10.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu
 
 set compiler_prefix=arm-none-eabi-
 
-set "version_file=..\Core\Src\main.c"
+set "version_file=..\Core\Src\main"
 
 if [%BUILD_TAG%]==[] goto :do_make
 
