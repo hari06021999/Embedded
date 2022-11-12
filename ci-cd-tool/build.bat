@@ -1,5 +1,5 @@
 rem
-rem usage: build build-dir {Debug} {all}
+rem usage: build build-dir {Debug|Release} {all|clean}
 rem
 
 setlocal
