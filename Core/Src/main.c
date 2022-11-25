@@ -97,13 +97,14 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	 if( HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_13)== 1){
+	
 		 HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
 		 HAL_Delay(1000);
-	 }
-	 else{
-		 HA_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
-	 }
+	
+	 
+		 HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+	         HAL_Delay(1000);	         
+	 
 
     /* USER CODE BEGIN 3 */
   }
