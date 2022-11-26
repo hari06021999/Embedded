@@ -20,27 +20,17 @@ pipeline {
     }
      
     post {
-        extendedEmail {
-                recipientList('xyzcoders@xyz.com')
-                defaultSubject("Jenkins Job started : ${jobName}")
-                defaultContent("See the latest build in the jenkins job here https://jenkins.xyz.com/job/${jobName}/")
-                contentType('text/html')
-                triggers {
-                    failure {
-                        content("See the latest build in the jenkins job here https://jenkins.xyz.com/job/${jobName}/")
-                        contentType('text/html')
-                        recipientList('xyzcoder@xyz.com')
-                        subject("Build Failed in Jenkins: ${jobName}")
-                    }
-                    success {
-                        content('See the latest build in the jenkins job here https://jenkins.xyz.com/job/${jobName}/ <pre> ${BUILD_LOG, maxLines=30, escapeHtml=false} </pre>')
-                        contentType('text/html')
-                        recipientList('xyzcoder@xyz.com')
-                        subject("Build Success in Jenkins: ${jobName}")
-                    }
-                }
+            always{
+                archiveArtifacts artifacts: '*.txt', onlyIfSuccessful: true
+                
+                emailext to: "hariprithi99@gmail.com",
+                subject: "jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
+                body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}",
+                attachmentsPattern: '*.txt'
+                
+            cleanWs()
             }
-    }
+        }
        
 }
     
