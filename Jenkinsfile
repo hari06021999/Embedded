@@ -13,18 +13,18 @@ pipeline {
         }
         
         
-    stage('Flash-Debug') { 
-            steps {
-                bat "${TOOL_DIR}\\flash.bat $params.DUT_STLINK_sn ${WORKSPACE}\\Debug\\LED.elf"
-            }
-        }  
+//     stage('Flash-Debug') { 
+//             steps {
+//                 bat "${TOOL_DIR}\\flash.bat $params.DUT_STLINK_sn ${WORKSPACE}\\Debug\\LED.elf"
+//             }
+//         }  
         
     
        
     }
      post{
         always{
-            emailext to: "hariprithi99@gmail.com",
+            emailext to: "hariprithi99@gmail.com,hariprithi1999@gmail.com",
             subject: "Test Email",
             body: "Test",
             attachLog: true
