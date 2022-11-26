@@ -24,14 +24,14 @@ pipeline {
     }
      post{
         always{
-            emailext to: "hariharan.m@felicitoussolutions.com,shivani.b@felicitoussolutions.com,info@felicitoussolutions.com,musthaba@felicitoussolutions.com,barath_ks@felicitoussolutions.com",
+            emailext to: "hariharan.m@felicitoussolutions.com",
             subject: "Test Email From Jenkins",
-            body: "I Hope all of you getting Email's from Jenkins ",
+            body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}",
             attachLog: true
         }
     }
      
-   
+   //,shivani.b@felicitoussolutions.com,info@felicitoussolutions.com,musthaba@felicitoussolutions.com,barath_ks@felicitoussolutions.com
        
 }
     
