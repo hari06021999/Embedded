@@ -13,11 +13,11 @@ pipeline {
         }
         
         
-    stage('Flash-Debug') { 
-            steps {
-                bat "${TOOL_DIR}\\flash.bat $params.DUT_STLINK_sn ${WORKSPACE}\\Debug\\LED.elf"
-            }
-        }  
+//     stage('Flash-Debug') { 
+//             steps {
+//                 bat "${TOOL_DIR}\\flash.bat $params.DUT_STLINK_sn ${WORKSPACE}\\Debug\\LED.elf"
+//             }
+//         }  
         
     
        
