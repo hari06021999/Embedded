@@ -15,21 +15,18 @@ pipeline {
             steps {
                 bat "${TOOL_DIR}\\flash.bat $params.DUT_STLINK_sn ${WORKSPACE}\\Debug\\LED.elf"
             }
-        }      
+        }  
+        
+     stage ('Email')
+        {
+            steps{
+                emailext (to: 'hariprithi99@gmail.com', replyTo: 'hariprithi99@gmail.com', subject: "Email Report from - '${env.JOB_NAME}' ", body: readFile("target/surefire-reports/emailable-report.html"), mimeType: 'text/html'); 
+            }
+        }
        
     }
      
-    post {
-            always{
-              
-                
-                emailext to: "hariprithi1999@gmail.com",
-                subject: "jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
-                body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}",
-                attachmentsPattern: '*.txt'
-                
-            }
-        }
+   
        
 }
     
