@@ -26,8 +26,7 @@ pipeline {
         always{
             emailext to: "hariharan.m@felicitoussolutions.com",
             subject: "Test Email From Jenkins",
-            body: "I Hope all of you getting Email's From Jenkins",
-            body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}",
+            body: "I Hope all of you getting Email's From Jenkins ${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}",
             attachLog: true
         }
     }
