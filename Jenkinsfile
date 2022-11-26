@@ -24,9 +24,9 @@ pipeline {
     }
      post{
         always{
-            emailext to: "hariprithi99@gmail.com,hariprithi1999@gmail.com",
-            subject: "Test Email",
-            body: "Test",
+            emailext to: "hariharan.m@felicitoussolutions.com",
+            subject: "Test Email From Jenkins",
+            body: "I Hope ",
             attachLog: true
         }
     }
