@@ -18,13 +18,33 @@ pipeline {
         }      
        
     }
-     post {
+     
         
-        always{
-            emailext to: "hariprithi99@gmail.com",
-            subject: "Test Email",
-            body: "Test",
-            attachLog: true
+        static void sendEmail(Job job, String jobName) {
+    job.with {
+        publishers {
+            extendedEmail {
+                recipientList('xyzcoders@xyz.com')
+                defaultSubject("Jenkins Job started : ${jobName}")
+                defaultContent("See the latest build in the jenkins job here https://jenkins.xyz.com/job/${jobName}/")
+                contentType('text/html')
+                triggers {
+                    failure {
+                        content("See the latest build in the jenkins job here https://jenkins.xyz.com/job/${jobName}/")
+                        contentType('text/html')
+                        recipientList('xyzcoder@xyz.com')
+                        subject("Build Failed in Jenkins: ${jobName}")
+                    }
+                    success {
+                        content('See the latest build in the jenkins job here https://jenkins.xyz.com/job/${jobName}/ <pre> ${BUILD_LOG, maxLines=30, escapeHtml=false} </pre>')
+                        contentType('text/html')
+                        recipientList('xyzcoder@xyz.com')
+                        subject("Build Success in Jenkins: ${jobName}")
+                    }
+                }
+            }
         }
+    }
+
     }
 }
