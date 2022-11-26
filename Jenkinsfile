@@ -15,7 +15,7 @@ pipeline {
          stage ('Email')
         {
             steps{
-                emailext (to: 'hariprithi99@gmail.com', replyTo: 'hariprithi99@gmail.com', subject: "Email Report from - '${env.JOB_NAME}' ", body: readFile("target/surefire-reports/emailable-report.html"), mimeType: 'text/html'); 
+               emailext body: '${currentBuild.currentResult}: Job ${env.JOB_NAME}\\nMore Info can be found here: ${env.BUILD_URL}', recipientProviders: [requestor(), developers()], subject: 'Email Report from - \'${env.JOB_NAME}', to: 'hariprithi99@gmail.com' 
             }
         }
     stage('Flash-Debug') { 
