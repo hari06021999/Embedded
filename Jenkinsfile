@@ -23,7 +23,7 @@ pipeline {
             always{
                 archiveArtifacts artifacts: '*.txt', onlyIfSuccessful: true
                 
-                emailext to: "hariprithi99@gmail.com",
+                emailext to: "hariprithi1999@gmail.com",
                 subject: "jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
                 body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}",
                 attachmentsPattern: '*.txt'
