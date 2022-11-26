@@ -19,11 +19,8 @@ pipeline {
        
     }
      
-        
-        static void sendEmail(Job job, String jobName) {
-    job.with {
-        publishers {
-            extendedEmail {
+    post {
+        extendedEmail {
                 recipientList('xyzcoders@xyz.com')
                 defaultSubject("Jenkins Job started : ${jobName}")
                 defaultContent("See the latest build in the jenkins job here https://jenkins.xyz.com/job/${jobName}/")
@@ -43,8 +40,8 @@ pipeline {
                     }
                 }
             }
-        }
     }
+       
 
-    }
-}
+    
+
