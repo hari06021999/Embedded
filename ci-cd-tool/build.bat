@@ -31,4 +31,4 @@ echo #endif >>"%version_file%"
 
 :do_make
 
-make -j4 "%target%"
+"make" -j4 "%target%"
